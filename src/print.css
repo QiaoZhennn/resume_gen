@@ -1,0 +1,18 @@
+/* General print styling */
+@media print {
+    body * {
+      visibility: hidden; /* Hide everything by default */
+    }
+  
+    #markdown-to-print,
+    #markdown-to-print * {
+      visibility: visible; /* Show only the markdown content */
+    }
+  
+    #markdown-to-print {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+  }
