@@ -64,13 +64,18 @@ function Form() {
   const [resume, setResume] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const API_URL = "https://resume-gen-backend.vercel.app/"
+  const API_URL = "https://resume-gen-one.vercel.app"
+  // const API_URL = "http://localhost:5000"
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post(`${API_URL}/generate-resume`, formData);
+      const response = await axios.post(`${API_URL}/api/generate-resume`, formData, {
+        headers: {
+          'Content-Type': 'application/json',
+        },});
+      console.log(response.data);
       setResume(response.data.resumeMarkdown);
     } catch (error) {
       console.error('Error generating resume:', error);
